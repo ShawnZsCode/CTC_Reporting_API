@@ -7,11 +7,59 @@
 	},
 	"item": [
 		{
-			"name": "reports",
-			"item": [
+			"name": "Get licenses by organization",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/reports/csl/{{apiVersion}}/licenses?reportsKey={{reportsKey}}&page=1&pageSize=1000&includePermissions=true&orderBy=updatedAt&orderByDescending=true",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"reports",
+						"csl",
+						"{{apiVersion}}",
+						"licenses"
+					],
+					"query": [
+						{
+							"key": "reportsKey",
+							"value": "{{reportsKey}}",
+							"description": "(Required) Organization-specific key obtained from CTC"
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"description": "Page of results"
+						},
+						{
+							"key": "pageSize",
+							"value": "1000",
+							"description": "Number of results per page"
+						},
+						{
+							"key": "includePermissions",
+							"value": "true",
+							"description": "Whether to include permissions"
+						},
+						{
+							"key": "orderBy",
+							"value": "updatedAt",
+							"description": "Field by which to order the results"
+						},
+						{
+							"key": "orderByDescending",
+							"value": "true",
+							"description": "Whether results should be returned in descending order based on the 'orderBy' "
+						}
+					]
+				}
+			},
+			"response": [
 				{
-					"name": "Get licenses by organization",
-					"request": {
+					"name": "Success",
+					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -60,68 +108,69 @@
 							]
 						}
 					},
-					"response": [
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n  \"totalItems\": 0,\r\n  \"items\": [\r\n    {\r\n      \"productId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n      \"productName\": \"string\",\r\n      \"serialNumber\": \"string\",\r\n      \"subscriptionStartDate\": \"2023-01-18T15:04:51.989Z\",\r\n      \"subscriptionEndDate\": \"2023-01-18T15:04:51.989Z\",\r\n      \"licenseCount\": 0,\r\n      \"licenseType\": \"string\",\r\n      \"autorenew\": true,\r\n      \"autorenewLicenseCount\": 0,\r\n      \"createdBy\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n      \"createdAt\": \"2023-01-18T15:04:51.989Z\",\r\n      \"updatedBy\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n      \"updatedAt\": \"2023-01-18T15:04:51.989Z\",\r\n      \"permissions\": [\r\n        {\r\n          \"resourceId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n          \"resourceType\": \"string\",\r\n          \"assignedBy\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n          \"assignedAt\": \"2023-01-18T15:04:51.989Z\",\r\n          \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\r\n        }\r\n      ],\r\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\r\n    }\r\n  ]\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Get app-sessions by organization and product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/reports/csl/{{apiVersion}}/app-sessions?reportsKey={{reportsKey}}&productId=<uuid>&orderBy=startedAt&orderByDescending=true",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"reports",
+						"csl",
+						"{{apiVersion}}",
+						"app-sessions"
+					],
+					"query": [
 						{
-							"name": "Success",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/csl/reports/v1/reports/licenses?reportsKey={{reportsKey}}&page=1&pageSize=1000&includePermissions=true&orderBy=updatedAt&orderByDescending=true",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"csl",
-										"reports",
-										"v1",
-										"reports",
-										"licenses"
-									],
-									"query": [
-										{
-											"key": "reportsKey",
-											"value": "{{reportsKey}}",
-											"description": "(Required) Organization-specific key obtained from CTC"
-										},
-										{
-											"key": "page",
-											"value": "1",
-											"description": "Page of results"
-										},
-										{
-											"key": "pageSize",
-											"value": "1000",
-											"description": "Number of results per page"
-										},
-										{
-											"key": "includePermissions",
-											"value": "true",
-											"description": "Whether to include permissions"
-										},
-										{
-											"key": "orderBy",
-											"value": "updatedAt",
-											"description": "Field by which to order the results"
-										},
-										{
-											"key": "orderByDescending",
-											"value": "true",
-											"description": "Whether results should be returned in descending order based on the 'orderBy' "
-										}
-									]
-								}
-							},
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": "{\r\n  \"totalItems\": 0,\r\n  \"items\": [\r\n    {\r\n      \"productId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n      \"productName\": \"string\",\r\n      \"serialNumber\": \"string\",\r\n      \"subscriptionStartDate\": \"2023-01-18T15:04:51.989Z\",\r\n      \"subscriptionEndDate\": \"2023-01-18T15:04:51.989Z\",\r\n      \"licenseCount\": 0,\r\n      \"licenseType\": \"string\",\r\n      \"autorenew\": true,\r\n      \"autorenewLicenseCount\": 0,\r\n      \"createdBy\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n      \"createdAt\": \"2023-01-18T15:04:51.989Z\",\r\n      \"updatedBy\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n      \"updatedAt\": \"2023-01-18T15:04:51.989Z\",\r\n      \"permissions\": [\r\n        {\r\n          \"resourceId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n          \"resourceType\": \"string\",\r\n          \"assignedBy\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n          \"assignedAt\": \"2023-01-18T15:04:51.989Z\",\r\n          \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\r\n        }\r\n      ],\r\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\r\n    }\r\n  ]\r\n}"
+							"key": "reportsKey",
+							"value": "{{reportsKey}}",
+							"description": "(Required) Organization-specific key obtained from CTC"
+						},
+						{
+							"key": "productId",
+							"value": "<uuid>",
+							"description": "(Required) productId from products list"
+						},
+						{
+							"key": "startDate",
+							"value": "<yyyy-mm-dd>",
+							"description": "Date cutoff after which to return results (Defaults to endDate-30)",
+							"disabled": true
+						},
+						{
+							"key": "endDate",
+							"value": "<yyyy-mm-dd>",
+							"description": "Date cutoff before which to return results (Defaults to today)",
+							"disabled": true
+						},
+						{
+							"key": "orderBy",
+							"value": "startedAt",
+							"description": "Field by which to order the results"
+						},
+						{
+							"key": "orderByDescending",
+							"value": "true",
+							"description": "Whether results should be returned in descending order based on the 'orderBy' "
 						}
 					]
-				},
+				}
+			},
+			"response": [
 				{
-					"name": "Get app-sessions by orgamization and product",
-					"request": {
+					"name": "Success",
+					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -172,78 +221,65 @@
 							]
 						}
 					},
-					"response": [
+					"_postman_previewlanguage": "json",
+					"header": [
 						{
-							"name": "Success",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/csl/reports/v1/reports/app-sessions?reportsKey={{reportsKey}}&productId=26ee028b-54dc-4d86-a73d-e86b6620dc30&orderBy=startedAt&orderByDescending=true",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"csl",
-										"reports",
-										"v1",
-										"reports",
-										"app-sessions"
-									],
-									"query": [
-										{
-											"key": "reportsKey",
-											"value": "{{reportsKey}}",
-											"description": "(Required) Organization-specific key obtained from CTC"
-										},
-										{
-											"key": "productId",
-											"value": "26ee028b-54dc-4d86-a73d-e86b6620dc30",
-											"description": "(Required) productId from products list"
-										},
-										{
-											"key": "startDate",
-											"value": "<yyyy-mm-dd>",
-											"description": "Date cutoff after which to return results (Defaults to endDate-30)",
-											"disabled": true
-										},
-										{
-											"key": "endDate",
-											"value": "<yyyy-mm-dd>",
-											"description": "Date cutoff before which to return results (Defaults to today)",
-											"disabled": true
-										},
-										{
-											"key": "orderBy",
-											"value": "startedAt",
-											"description": "Field by which to order the results"
-										},
-										{
-											"key": "orderByDescending",
-											"value": "true",
-											"description": "Whether results should be returned in descending order based on the 'orderBy' "
-										}
-									]
-								}
-							},
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"name": "Content-Type",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"totalItems\": 0,\n    \"items\": [\n        {\n            \"productId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n            \"productName\": \"string\",\n            \"productVersion\": \"string\",\n            \"startedAt\": \"string\",\n            \"endedAt\": \"string\",\n            \"computerName\": \"string\",\n            \"userId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n            \"applicationName\": \"string\",\n            \"autodeskVersionNumber\": \"string\",\n            \"autodeskSubVersionNumber\": \"string\",\n            \"autodeskBuildNumber\": \"string\",\n            \"sessionId\": \"string\"\n        }\n    ]\n}"
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"totalItems\": 0,\n    \"items\": [\n        {\n            \"productId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n            \"productName\": \"string\",\n            \"productVersion\": \"string\",\n            \"startedAt\": \"string\",\n            \"endedAt\": \"string\",\n            \"computerName\": \"string\",\n            \"userId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n            \"applicationName\": \"string\",\n            \"autodeskVersionNumber\": \"string\",\n            \"autodeskSubVersionNumber\": \"string\",\n            \"autodeskBuildNumber\": \"string\",\n            \"sessionId\": \"string\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get products list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/reports/csl/{{apiVersion}}/products?reportsKey={{reportsKey}}&page=1&pageSize=1000&orderBy=name&orderByDescending=false",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"reports",
+						"csl",
+						"{{apiVersion}}",
+						"products"
+					],
+					"query": [
+						{
+							"key": "reportsKey",
+							"value": "{{reportsKey}}"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "1000"
+						},
+						{
+							"key": "orderBy",
+							"value": "name"
+						},
+						{
+							"key": "orderByDescending",
+							"value": "false"
 						}
 					]
-				},
+				}
+			},
+			"response": [
 				{
-					"name": "Get products list",
-					"request": {
+					"name": "Success",
+					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -282,62 +318,18 @@
 							]
 						}
 					},
-					"response": [
+					"_postman_previewlanguage": "json",
+					"header": [
 						{
-							"name": "Success",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/csl/reports/v1/reports/products?reportsKey={{reportsKey}}&page=1&pageSize=1000&orderBy=name&orderByDescending=false",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"csl",
-										"reports",
-										"v1",
-										"reports",
-										"products"
-									],
-									"query": [
-										{
-											"key": "reportsKey",
-											"value": "{{reportsKey}}"
-										},
-										{
-											"key": "page",
-											"value": "1"
-										},
-										{
-											"key": "pageSize",
-											"value": "1000"
-										},
-										{
-											"key": "orderBy",
-											"value": "name"
-										},
-										{
-											"key": "orderByDescending",
-											"value": "false"
-										}
-									]
-								}
-							},
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"name": "Content-Type",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"totalItems\": 1,\n    \"items\": [\n        {\n            \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n            \"name\": \"string\"\n        }\n    ]\n}"
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
 						}
-					]
+					],
+					"cookie": [],
+					"body": "{\n    \"totalItems\": 1,\n    \"items\": [\n        {\n            \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n            \"name\": \"string\"\n        }\n    ]\n}"
 				}
 			]
 		}
